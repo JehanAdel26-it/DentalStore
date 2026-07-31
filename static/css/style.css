@@ -477,25 +477,31 @@ section{
 
 .category-icon{
 
-    width:100px;
+    width:80px;
 
-    height:100px;
-
-    border-radius:50%;
-
-    background:#eef7ff;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
+    height:80px;
 
     margin:auto;
 
-    font-size:45px;
+    border-radius:50%;
 
-    transition:.4s;
+    background:#eef6ff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-bottom:20px;
+
+}
+
+.category-icon i{
+
+    font-size:38px;
+
+    color:#0B5FA5;
 
 }
 
@@ -1058,5 +1064,76 @@ scroll-behavior:smooth;
 *{
 
 transition:.3s;
+
+}
+/*=========================================
+        STORE INFO
+=========================================*/
+
+.info-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:35px 20px;
+
+    text-align:center;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+    height:100%;
+
+}
+
+.info-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.info-card i{
+
+    width:70px;
+
+    height:70px;
+
+    line-height:70px;
+
+    border-radius:50%;
+
+    background:#0B5FA5;
+
+    color:#fff;
+
+    font-size:28px;
+
+    margin-bottom:15px;
+
+}
+
+.info-card h5{
+
+    font-weight:700;
+
+    margin-bottom:12px;
+
+}
+
+.info-card p{
+
+    color:#666;
+
+    margin-bottom:8px;
+
+}
+
+.info-card small{
+
+    color:#0B5FA5;
+
+    font-weight:600;
 
 }
