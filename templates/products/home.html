@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load custom_filters %}
 
 {% block title %}
 الرئيسية | DentalStore
@@ -928,7 +929,6 @@ placeholder="البريد الإلكتروني">
 
                     </p>
 
-
                 </div>
 
             </div>
@@ -988,6 +988,78 @@ placeholder="البريد الإلكتروني">
                         {{ owner|truncatechars:5 }}
 
                     </small>
+
+                </div>
+
+            </div>
+
+            <!-- فلتر خاص 1 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="info-card text-center">
+
+                    <i class="fa-solid fa-rotate-left"></i>
+
+                    <h5 class="mt-3">
+
+                        الاسم بالعكس
+
+                    </h5>
+
+                    <p>
+
+                        {{ owner|reverse_text }}
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- فلتر خاص 2 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="info-card text-center">
+
+                    <i class="fa-solid fa-font"></i>
+
+                    <h5 class="mt-3">
+
+                        أول كلمة
+
+                    </h5>
+
+                    <p>
+
+                        {{ store_name|first_word }}
+
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- فلتر خاص 3 -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="info-card text-center">
+
+                    <i class="fa-solid fa-dollar-sign"></i>
+
+                    <h5 class="mt-3">
+
+                        السعر بالفلتر
+
+                    </h5>
+
+                    <p>
+
+                        {{ 120|currency }}
+
+                    </p>
 
                 </div>
 
