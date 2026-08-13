@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+
+{% block title %}
+إنشاء حساب | DentalStore
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8 col-lg-6">
+
+            <div class="card shadow border-0 rounded-4">
+
+                <div class="card-body p-5">
+
+                    <div class="text-center mb-4">
+
+                        <i class="fa-solid fa-user-plus fa-4x text-primary"></i>
+
+                        <h2 class="mt-3">
+                            إنشاء حساب جديد
+                        </h2>
+
+                        <p class="text-muted">
+                            أنشئ حسابك في DentalStore
+                        </p>
+
+                    </div>
+
+
+                    {% if messages %}
+
+                        {% for message in messages %}
+
+                            <div class="alert alert-info">
+                                {{ message }}
+                            </div>
+
+                        {% endfor %}
+
+                    {% endif %}
+
+
+                    <form method="POST">
+
+                        {% csrf_token %}
+
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                الاسم الكامل
+                            </label>
+
+                            <input
+                                type="text"
+                                name="full_name"
+                                class="form-control"
+                                required>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                اسم المستخدم
+                            </label>
+
+                            <input
+                                type="text"
+                                name="username"
+                                class="form-control"
+                                required>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                البريد الإلكتروني
+                            </label>
+
+                            <input
+                                type="email"
+                                name="email"
+                                class="form-control"
+                                required>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                رقم الهاتف
+                            </label>
+
+                            <input
+                                type="text"
+                                name="phone"
+                                class="form-control"
+                                required>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                كلمة المرور
+                            </label>
+
+                            <input
+                                type="password"
+                                name="password"
+                                class="form-control"
+                                required>
+
+                        </div>
+
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+                                العنوان
+                            </label>
+
+                            <textarea
+                                name="address"
+                                class="form-control"
+                                rows="3"></textarea>
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary w-100">
+
+                            <i class="fa-solid fa-user-plus"></i>
+
+                            إنشاء الحساب
+
+                        </button>
+
+                    </form>
+
+
+                    <div class="text-center mt-4">
+
+                        <p>
+
+                            لديك حساب بالفعل؟
+
+                            <a href="{% url 'account_login' %}">
+                                تسجيل الدخول
+                            </a>
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
