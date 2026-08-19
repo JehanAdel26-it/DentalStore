@@ -13,4 +13,3 @@ urlpatterns = [
 
     path('product-types/', include('product_types.urls')),
 ]
- 

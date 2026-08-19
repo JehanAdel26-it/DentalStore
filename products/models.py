@@ -39,8 +39,9 @@ class Product(models.Model):
         return self.name
 
     # ===========================
-# Product Type Model
-# ===========================
+    # Product Type Model
+    # ===========================
+
 
 class ProductType(models.Model):
 
@@ -52,3 +53,46 @@ class ProductType(models.Model):
 
     def __str__(self):
         return self.name
+
+
+# ===========================
+# Many To Many Relationship
+# ===========================
+
+Product.add_to_class(
+    'product_types',
+    models.ManyToManyField(
+        ProductType,
+        blank=True
+    )
+)
+
+
+# ===========================
+# One To One Relationship
+# ===========================
+
+class ProductDetails(models.Model):
+
+    product = models.OneToOneField(
+        Product,
+        on_delete=models.CASCADE,
+        related_name='details'
+    )
+
+    manufacturer = models.CharField(
+        max_length=150,
+        blank=True
+    )
+
+    warranty = models.CharField(
+        max_length=100,
+        blank=True
+    )
+
+    specifications = models.TextField(
+        blank=True
+    )
+
+    def __str__(self):
+        return f"تفاصيل {self.product.name}"

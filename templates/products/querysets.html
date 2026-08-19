@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h2 class="mb-4">
+        QuerySet Functions
+    </h2>
+
+    <div class="alert alert-primary">
+        عدد المنتجات:
+        <strong>{{ products_count }}</strong>
+    </div>
+
+
+    <h4>1 - all()</h4>
+
+    {% for product in all_products %}
+
+        <p>
+            {{ product.name }}
+            - {{ product.price }}
+        </p>
+
+    {% empty %}
+
+        <p>لا توجد منتجات.</p>
+
+    {% endfor %}
+
+
+    <hr>
+
+
+    <h4>2 - filter()</h4>
+
+    {% for product in available_products %}
+
+        <p>
+            {{ product.name }}
+        </p>
+
+    {% empty %}
+
+        <p>لا توجد منتجات متوفرة.</p>
+
+    {% endfor %}
+
+
+    <hr>
+
+
+    <h4>3 - exclude()</h4>
+
+    {% for product in products_with_stock %}
+
+        <p>
+            {{ product.name }}
+            - الكمية:
+            {{ product.quantity }}
+        </p>
+
+    {% empty %}
+
+        <p>لا توجد منتجات.</p>
+
+    {% endfor %}
+
+
+    <hr>
+
+
+    <h4>4 - order_by()</h4>
+
+    {% for product in products_by_price %}
+
+        <p>
+            {{ product.name }}
+            - {{ product.price }}
+        </p>
+
+    {% empty %}
+
+        <p>لا توجد منتجات.</p>
+
+    {% endfor %}
+
+
+    <hr>
+
+
+    <h4>5 - values()</h4>
+
+    {% for product in product_names %}
+
+        <p>
+            {{ product.name }}
+            - {{ product.price }}
+        </p>
+
+    {% endfor %}
+
+
+    <hr>
+
+
+    <h4>6 - count()</h4>
+
+    <p>
+        عدد المنتجات:
+        {{ products_count }}
+    </p>
+
+
+    <hr>
+
+
+    <h4>7 - first()</h4>
+
+    {% if first_product %}
+
+        <p>
+            أول منتج:
+            {{ first_product.name }}
+        </p>
+
+    {% else %}
+
+        <p>لا توجد منتجات.</p>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

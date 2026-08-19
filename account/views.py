@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.hashers import make_password, check_password
 
-from .models import UserAccount
+from .models import UserAccount, Profile
 
 
 # ==============================
@@ -65,6 +65,15 @@ def register(request):
 
             address=address
 
+        )
+
+        # ==========================================
+        # إنشاء Profile للمستخدم
+        # علاقة One To One
+        # ==========================================
+
+        Profile.objects.create(
+            user=user
         )
 
         # حفظ بيانات المستخدم في Session
@@ -176,11 +185,26 @@ def profile(request):
 
         return redirect("account_login")
 
+    # ==========================================
+    # الحصول على Profile المرتبط بالمستخدم
+    # ==========================================
+
+    try:
+
+        profile_data = user.profile
+
+    except Profile.DoesNotExist:
+
+        profile_data = Profile.objects.create(
+            user=user
+        )
+
     return render(
         request,
         "account/profile.html",
         {
-            "user": user
+            "user": user,
+            "profile": profile_data
         }
     )
 

@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}
+إضافة منتج
+{% endblock %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="text-center mb-5">
+
+        <h2>
+            إضافة منتج
+        </h2>
+
+        <p class="text-muted">
+            الطريقة الأولى: HTML Form
+        </p>
+
+    </div>
+
+    <div class="card p-4 shadow">
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    اسم المنتج
+                </label>
+
+                <input
+                    type="text"
+                    name="name"
+                    class="form-control"
+                    required
+                >
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    السعر
+                </label>
+
+                <input
+                    type="number"
+                    name="price"
+                    class="form-control"
+                    step="0.01"
+                    required
+                >
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">
+                    الكمية
+                </label>
+
+                <input
+                    type="number"
+                    name="quantity"
+                    class="form-control"
+                    min="0"
+                    required
+                >
+
+            </div>
+
+            <button
+                type="submit"
+                class="btn btn-primary"
+            >
+                إضافة المنتج
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

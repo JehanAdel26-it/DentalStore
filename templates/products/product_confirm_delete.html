@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <div class="card shadow p-4 text-center">
+
+        <h3>
+            هل أنت متأكد من حذف المنتج؟
+        </h3>
+
+        <p class="my-4">
+            {{ product.name }}
+        </p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <button class="btn btn-danger">
+                نعم، حذف
+            </button>
+
+            <a
+                href="{% url 'product_list' %}"
+                class="btn btn-secondary"
+            >
+                إلغاء
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

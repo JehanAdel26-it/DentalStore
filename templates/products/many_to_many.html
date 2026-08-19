@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h2 class="mb-4">
+        علاقة Many-to-Many
+    </h2>
+
+    {% if message %}
+
+        <div class="alert alert-warning">
+            {{ message }}
+        </div>
+
+    {% else %}
+
+        <div class="card p-4 shadow">
+
+            <h4 class="mb-3">
+                المنتج:
+                {{ product.name }}
+            </h4>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <p>
+                    اختر أنواع المنتج:
+                </p>
+
+                {% for type in product_types %}
+
+                    <div class="form-check mb-2">
+
+                        <input
+                            class="form-check-input"
+                            type="checkbox"
+                            name="product_types"
+                            value="{{ type.id }}"
+                            id="type{{ type.id }}"
+                            {% if type.id in selected_ids %}
+                                checked
+                            {% endif %}
+                        >
+
+                        <label
+                            class="form-check-label"
+                            for="type{{ type.id }}"
+                        >
+                            {{ type.name }}
+                        </label>
+
+                    </div>
+
+                {% empty %}
+
+                    <div class="alert alert-info">
+                        لا توجد أنواع منتجات حاليًا.
+                        أضيفي أنواعًا من لوحة الإدارة.
+                    </div>
+
+                {% endfor %}
+
+                <button class="btn btn-primary mt-3">
+                    حفظ العلاقة
+                </button>
+
+            </form>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

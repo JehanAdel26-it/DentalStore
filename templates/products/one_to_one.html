@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+
+    <h2 class="mb-4">
+        علاقة One-to-One
+    </h2>
+
+    {% if message %}
+
+        <div class="alert alert-warning">
+            {{ message }}
+        </div>
+
+    {% else %}
+
+        <div class="card p-4 shadow">
+
+            <h4>
+                المنتج:
+                {{ product.name }}
+            </h4>
+
+            <hr>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        الشركة المصنعة
+                    </label>
+
+                    <input
+                        type="text"
+                        name="manufacturer"
+                        class="form-control"
+                        value="{% if details %}{{ details.manufacturer }}{% endif %}"
+                    >
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        الضمان
+                    </label>
+
+                    <input
+                        type="text"
+                        name="warranty"
+                        class="form-control"
+                        value="{% if details %}{{ details.warranty }}{% endif %}"
+                    >
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+                        المواصفات
+                    </label>
+
+                    <textarea
+                        name="specifications"
+                        class="form-control"
+                        rows="5"
+                    >{% if details %}{{ details.specifications }}{% endif %}</textarea>
+
+                </div>
+
+                <button class="btn btn-primary">
+                    حفظ التفاصيل
+                </button>
+
+            </form>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
